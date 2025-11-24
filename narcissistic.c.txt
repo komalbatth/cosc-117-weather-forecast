@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int get_int(char message[]);
+int int_pow(int base, int power);
+int int_log(int base, int number);
+int get_num_digits(int number);
+bool is_narcissistic(int n);
+void append(int value, int arr[], int count[]);
+
+int main(void){
+        // ask user for the maximum number of digits
+        int max_num_digits = get_int("What is the maximum number of digits (from 1 to 7) do you want to check for Narcissistic numbers: ");
+
+        // validate that the maximum number of digits is within [1,7]
+        if (max_num_digits > 7 || max_num_digits < 1) {
+                printf("The number you provided (%d) is invalid.\n", max_num_digits);
+                return 1;
+        }
+
+        // maximum number to check
+        int max_number = int_pow(10, max_num_digits) - 1;
+
+        // create an integer array that is can store up to 256 values.
+        int results[256] = {0};
+
+        // initialize the count. It is an array of a single element.
+        int count_narcissistic[1] = {0};
+
+        // TODO: check all the numbers from 1 to the maximum, and store the narcissistic numbers to results
+        // YOUR CODE HERE
+        
+        
+        
+        // print out the summary
+        printf("There are %d Narcissistic numbers less than or equal to %d digits long.\n", count_narcissistic[0], max_num_digits);
+        
+        // final interaction with user
+        int index = get_int("Which one of them do you want to see (index from 0)? ");
+        
+        // TODO: check if user's number is within the range ([0, largest_index]), and prints response accordingly
+        // YOUR CODE HERE
+        
+        return 0;
+}
+
+int get_int(char message[]){
+        int n = 0;
+        printf("%s",message);
+        scanf("%d", &n);
+        return n;
+}
+
+int int_pow(int base, int power){
+        int n = 1;
+        for(int i =0; i<power; i++) n*=base;
+        return n;
+}
+
+int int_log(int base, int n){
+        if (base <= 1 || n <= 0)
+                return -1; // invalid input
+        int result = 0;
+        int value = 1;
+
+        while (value <= n / base) {
+                value *= base;
+                result++;
+        }
+
+        return result;
+}
+
+int get_num_digits(int number){
+        return int_log(10, number) + 1;
+}
+
+bool is_narcissistic(int n){
+        int original_n = n;    
+        int num_digits = get_num_digits(n);
+        // TODO: check if the number n is a Narcissitic number. 
+        // The function returns a boolean
+        // YOUR CODE HERE
+}
+
+void append(int value, int arr[], int count[]){
+        // TODO: this function appends value into an existing array, which is stored in the pre-allocated arr
+		// arr is pre-allocated, so the actual array can store its element in (part of) arr
+		// count is an array of only one element. It stores the number of elements in the actual array
+		// YOUR CODE HERE
+}
